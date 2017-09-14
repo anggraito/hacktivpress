@@ -11,10 +11,12 @@ var findAllData = (req, res) => {
 }
 
 var registerUser = (req, res) => {
+  let randomSalt = secret.random(10)
+  let hashPassword = secret.createSalt(req.body.password, randomSalt)
   User.create({
     username: req.body.username,
     password: req.body.password,
-    salt: req.body.salt
+    salt: randomSalt
   })
   .then(() => {
     res.send(`Berhasil menambahkan user baru`)
