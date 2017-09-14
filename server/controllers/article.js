@@ -32,7 +32,17 @@ var createData = (req, res) => {
 var updateData = (req, res) => {
   Article.findById(req.params.id)
   .then((article) => {
-    
+    article.title = req.body.article || article.title
+    article.content = req.body.content || article.content
+    article.category = req.body.category || article.category
+    article.author = req.body.author || article.author
+
+    article.save((err, data) => {
+      if(err) {
+        res.send(err)
+      }
+      res.send(data)
+    })
   })
   .catch(err => console.log(err))
 }
@@ -61,6 +71,7 @@ var removeData = (req, res) => {
 
 module.exports = {
   getAllData, getOneData,
-  createData, getByAuthor,
+  createData, updateData,
+  getByAuthor,
   removeData
 }

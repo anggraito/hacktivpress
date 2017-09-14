@@ -6,6 +6,7 @@ const controllerArticle = require('../controllers/article')
 router.get('/', controllerArticle.getAllData)
 router.get('/:id', controllerArticle.getOneData)
 router.post('/', controllerArticle.createData)
+router.put('/:id', controllerArticle.updateData)
 router.delete('/:id', controllerArticle.removeData)
 router.get('/:author', controllerArticle.getByAuthor)
 
