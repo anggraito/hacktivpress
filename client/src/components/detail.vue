@@ -1,7 +1,9 @@
 <template>
   <div class="detail">
     <div class="item-wrap">
-        <h3>Judul</h3>
+        <h3>title</h3>
+        <p>content</p>
+        <small>category</small>
         <p>author</p>
         <article>Ini isi articlenya</article>
     </div>
@@ -10,10 +12,7 @@
 
 <script>
 export default {
-  name: "detail",
-  methods: {
-    
-  }
+  name: 'detail'
 }
 </script>
 
