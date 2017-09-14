@@ -10,7 +10,8 @@ var userSchema = new Schema({
   password: {
     type: String,
     required: [true, 'Tidak boleh kosong']
-  }
+  },
+  salt: String
 })
 // compiling model from schema
 var User = mongoose.model('user', userSchema);
