@@ -25,11 +25,39 @@ var registerUser = (req, res) => {
 }
 
 var loginUser = (req, res) => {
-  
+  User.findOne({username: req.body.username})
+  .then(response => {
+    let randomSalt = secret.random(10)
+    let hashPassword = secret.createSalt(req.body.password, randomSalt)
+    if(req.body.password == hashPassword){
+      let token = jwt.sign({
+        username: response.username,
+        password: response.password
+      })
+      let userObj = {
+        token: token,
+        id: response._id,
+        username: response.username
+      }
+      res.send(userObj)
+    } else {
+      res.send('Password salah!')
+    }
+  })
+  .catch(err => console.log(err))
+}
+
+var deleteUser = (req, res) => {
+  User.findByIdAndRemove(req.params.id)
+  .then(() => {
+    res.send('Deleted success')
+  })
+  .catch(err => console.log(err))
 }
 
 module.exports = {
   findAllData,
   registerUser,
-  loginUser
+  loginUser,
+  deleteUser
 }
