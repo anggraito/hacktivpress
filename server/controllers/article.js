@@ -21,7 +21,7 @@ var createData = (req, res) => {
     title: req.body.title,
     content: req.body.content,
     category: req.body.category,
-    author: req.body.author
+    author: author._id
   })
   .then((article) => {
     res.send(`Berhasil menambahakan article "${article.title}"`)
@@ -48,11 +48,9 @@ var updateData = (req, res) => {
 }
 
 var getByAuthor = (req, res) => {
-  Article.findOne({author: req.params.author})
-  console.log(req.params.author)
-  .populate('author')
-  .then((au) => {
-    res.send(au)
+  Article.find({author: author._id})
+  .then((data) => {
+    res.send(data)
   })
   .catch(err => console.log(err))
 }
