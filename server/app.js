@@ -4,7 +4,7 @@ const express = require('express'),
       cors = require('cors'),
       axios = require('axios');
 const user = require('./routes/user');
-      // article = require('./routes/article');
+      article = require('./routes/article');
 const app = express();
 const port = process.env.PORT || 3000 ;
 
@@ -20,7 +20,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // route setting use
 app.use('/users', user)
-// app.use('/articles', article)
+app.use('/articles', article)
 
 app.listen(port);
 console.log('Your presentation is running on http://localhost:' + port);
