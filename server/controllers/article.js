@@ -21,7 +21,7 @@ var createData = (req, res) => {
     title: req.body.title,
     content: req.body.content,
     category: req.body.category,
-    author: author._id
+    author: req.body.author
   })
   .then((article) => {
     res.send(`Berhasil menambahakan article "${article.title}"`)
@@ -48,9 +48,11 @@ var updateData = (req, res) => {
 }
 
 var getByAuthor = (req, res) => {
-  Article.find({author: author._id})
+  var query = Article.where({author: req.params.author})
+  query.findOne()
   .then((data) => {
     res.send(data)
+    console.log(data)
   })
   .catch(err => console.log(err))
 }
