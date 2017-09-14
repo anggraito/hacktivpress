@@ -1,4 +1,6 @@
 const User = require('../models/users')
+const jwt = require('jsonwebtoken')
+const secret = require('../helpers/auth')
 
 var findAllData = (req, res) => {
   User.find()
