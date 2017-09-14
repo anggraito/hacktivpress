@@ -29,7 +29,38 @@ var createData = (req, res) => {
   .catch(err => console.log(err))
 }
 
+var updateData = (req, res) => {
+  Article.findById(req.params.id)
+  .then((article) => {
+    
+  })
+  .catch(err => console.log(err))
+}
+
+var getByAuthor = (req, res) => {
+  Article.findOne({author: req.params.author})
+  console.log(req.params.author)
+  .populate('author')
+  .then((au) => {
+    res.send(au)
+  })
+  .catch(err => console.log(err))
+}
+
+var getByCategory = (req, res) => {
+
+}
+
+var removeData = (req, res) => {
+  Article.findByIdAndRemove(req.params.id)
+  .then(() => {
+    res.send('Hapus data oke')
+  })
+  .catch(err => console.log(err))
+}
+
 module.exports = {
   getAllData, getOneData,
-  createData
+  createData, getByAuthor,
+  removeData
 }
