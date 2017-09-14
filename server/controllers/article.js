@@ -17,9 +17,19 @@ var getOneData = (req, res) => {
 }
 
 var createData = (req, res) => {
-
+  Article.create({
+    title: req.body.title,
+    content: req.body.content,
+    category: req.body.category,
+    author: req.body.author
+  })
+  .then((article) => {
+    res.send(`Berhasil menambahakan article "${article.title}"`)
+  })
+  .catch(err => console.log(err))
 }
 
 module.exports = {
-  getAllData, getOneData
+  getAllData, getOneData,
+  createData
 }

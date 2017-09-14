@@ -19,7 +19,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // route setting use
-app.use('/users', user)
+app.use('/', user)
 app.use('/articles', article)
 
 app.listen(port);
