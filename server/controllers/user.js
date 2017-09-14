@@ -15,7 +15,7 @@ var registerUser = (req, res) => {
   let hashPassword = secret.createSalt(req.body.password, randomSalt)
   User.create({
     username: req.body.username,
-    password: req.body.password,
+    password: hashPassword,
     salt: randomSalt
   })
   .then(() => {
@@ -25,7 +25,7 @@ var registerUser = (req, res) => {
 }
 
 var loginUser = (req, res) => {
-
+  
 }
 
 module.exports = {

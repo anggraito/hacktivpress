@@ -5,6 +5,6 @@ var controllerUser = require('../controllers/user')
 
 router.get('/users', controllerUser.findAllData)
 router.post('/register', controllerUser.registerUser)
-// router.post('/login')
+router.post('/login', controllerUser.loginUser)
 
 module.exports = router
