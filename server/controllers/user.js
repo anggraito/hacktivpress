@@ -31,8 +31,7 @@ var loginUser = (req, res) => {
     let hashPassword = secret.createSalt(req.body.password, randomSalt)
     if(req.body.password == hashPassword){
       let token = jwt.sign({
-        username: response.username,
-        password: response.password
+        username: response.username
       })
       let userObj = {
         token: token,
