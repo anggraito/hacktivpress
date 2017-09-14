@@ -7,7 +7,7 @@ const http = axios.create({
   baseURL: `http://localhost:3000`
 })
 
-export const store = new Vuex.Store({
+var store = new Vuex.Store({
   state: {
     articles: ''
   },
@@ -26,3 +26,5 @@ export const store = new Vuex.Store({
     }
   }
 })
+
+export default store

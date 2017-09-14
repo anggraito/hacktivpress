@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
-    <div class="item-wrap">
-        <h3>title</h3>
+    <div class="item-wrap" v-for="article in articles">
+        <h3>{{article.title}}</h3>
         <p>content</p>
         <small>category</small>
         <p>author</p>
@@ -12,7 +12,12 @@
 
 <script>
 export default {
-  name: 'detail'
+  name: 'detail',
+  computed: {
+    Articles () {
+      return this.$store.state.articles
+    }
+  }
 }
 </script>
 
